@@ -103,7 +103,7 @@ class _WebViewState extends State<WebView> {
       body: Column(
         children: <Widget>[
           _appBar(
-              Color(int.parse('0xff${statusBarColorStr}')), backButtonColor),
+              Color(int.parse('0xff' + statusBarColorStr)), backButtonColor),
           Expanded(
             child: WebviewScaffold(
               url: widget.url,
@@ -114,7 +114,7 @@ class _WebViewState extends State<WebView> {
               initialChild: Container(
                 color: Colors.white,
                 child: Center(
-                  child: Text('Waiting'),
+                  child: Text('Waiting...'),
                 ),
               ),
             ),
@@ -133,7 +133,7 @@ class _WebViewState extends State<WebView> {
       );
     }
     return Container(
-      color: backButtonColor,
+      color: backgroundColor,
       padding: EdgeInsets.fromLTRB(0, 40, 0, 10),
       child: FractionallySizedBox(
         widthFactor: 1,
