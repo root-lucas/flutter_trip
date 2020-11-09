@@ -20,7 +20,7 @@ class GridNav extends StatelessWidget {
     );
   }
 
-  _gridNavItems(BuildContext context) {
+  List<Widget> _gridNavItems(BuildContext context) {
     List<Widget> items = [];
     if (gridNav == null) return items;
     if (gridNav.hotel != null) {
@@ -35,7 +35,7 @@ class GridNav extends StatelessWidget {
     return items;
   }
 
-  _gridNavItem(BuildContext context, GridNavItem gridNavItem, bool first) {
+  Widget _gridNavItem(BuildContext context, GridNavItem gridNavItem, bool first) {
     List<Widget> items = [];
     List<Widget> expandItems = [];
     Color startColor = Color(int.parse('0xff${gridNavItem.startColor}'));
@@ -64,7 +64,7 @@ class GridNav extends StatelessWidget {
     );
   }
 
-  _mainItem(BuildContext context, CommonModel model) {
+  Widget _mainItem(BuildContext context, CommonModel model) {
     return _wrapGesture(
         context,
         Stack(
@@ -87,8 +87,7 @@ class GridNav extends StatelessWidget {
         model);
   }
 
-  _doubleItem(
-      BuildContext context, CommonModel topItem, CommonModel bottomItem) {
+  Widget _doubleItem(BuildContext context, CommonModel topItem, CommonModel bottomItem) {
     return Column(
       children: <Widget>[
         Expanded(
@@ -109,7 +108,7 @@ class GridNav extends StatelessWidget {
     );
   }
 
-  _item(BuildContext context, CommonModel item, bool first) {
+  Widget _item(BuildContext context, CommonModel item, bool first) {
     BorderSide borderSide = BorderSide(width: 0.8, color: Colors.white);
     return FractionallySizedBox(
       //撑满宽度
@@ -132,7 +131,7 @@ class GridNav extends StatelessWidget {
     );
   }
 
-  _wrapGesture(BuildContext context, Widget widget, CommonModel model) {
+  Widget _wrapGesture(BuildContext context, Widget widget, CommonModel model) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
