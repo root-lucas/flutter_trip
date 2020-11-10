@@ -3,6 +3,7 @@ import 'package:flutter_trip/model/common_model.dart';
 import 'package:flutter_trip/model/grid_nav_model.dart';
 import 'package:flutter_trip/util/navigator_util.dart';
 import 'package:flutter_trip/widget/webview.dart';
+import 'package:flutter_trip/widget/cached_image.dart';
 
 class GridNav extends StatelessWidget {
   final GridNavModel gridNav;
@@ -69,14 +70,14 @@ class GridNav extends StatelessWidget {
     return _wrapGesture(
         context,
         Stack(
-          alignment: AlignmentDirectional.topCenter,
+          alignment: Alignment.topCenter,
           children: <Widget>[
-            Image.network(
-              model.icon,
+            CachedImage(
+              imageUrl: model.icon,
               fit: BoxFit.contain,
               height: 88,
               width: 121,
-              alignment: AlignmentDirectional.bottomEnd,
+              alignment: Alignment.bottomCenter,
             ),
             Container(
               margin: EdgeInsets.only(top: 11),
