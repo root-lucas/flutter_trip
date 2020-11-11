@@ -16,6 +16,7 @@ import 'package:flutter_trip/widget/search_bar.dart';
 import 'package:flutter_trip/widget/sub_nav.dart';
 import 'package:flutter_trip/widget/webview.dart';
 import 'package:flutter_trip/widget/cached_image.dart';
+import 'package:flutter_trip/pages/city_page.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
 const SEARCH_BAR_DEFAULT_TEXT = '网红打卡地 景点 酒店 美食';
@@ -35,6 +36,7 @@ class _HomePageState extends State<HomePage>
   List<CommonModel> subNavList = []; //活动导航
   SalesBoxModel salesBox; //salesBox数据
   bool _loading = true; //页面加载状态
+  String city = '广州市';
 
   @override
   void initState() {
@@ -78,6 +80,14 @@ class _HomePageState extends State<HomePage>
       });
     }
     return null;
+  }
+
+  //跳转到城市列表
+  void _jumpToCity() async {
+    final result = await NavigatorUtil.push(context, CityPage());
+    setState(() {
+      city = result;
+    });
   }
 
   //跳转搜索页面
@@ -178,7 +188,8 @@ class _HomePageState extends State<HomePage>
               inputBoxClick: _jumpToSearch,
               speakClick: _jumpToSpeak,
               defaultText: SEARCH_BAR_DEFAULT_TEXT,
-              leftButtonClick: () {},
+              leftButtonClick: _jumpToCity,
+              city: city,
             ),
           ),
         ),
