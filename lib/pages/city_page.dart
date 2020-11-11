@@ -90,7 +90,7 @@ class _CityPageState extends State<CityPage> {
                       Icons.place,
                       size: 20.0,
                     ),
-                    Text(" 西安市"),
+                    Text(" 广州市"),
                   ],
                 )),
             Divider(
@@ -107,7 +107,7 @@ class _CityPageState extends State<CityPage> {
                   suspensionHeight: _suspensionHeight,
                   onSusTagChanged: _onSusTagChanged,
                   header: AzListViewHeader(
-                      tag: "^",
+                      tag: "★",
                       height: 140,
                       builder: (context) {
                         return _buildHeader();

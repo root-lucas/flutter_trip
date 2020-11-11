@@ -84,10 +84,12 @@ class _HomePageState extends State<HomePage>
 
   //跳转到城市列表
   void _jumpToCity() async {
-    final result = await NavigatorUtil.push(context, CityPage());
-    setState(() {
-      city = result;
-    });
+    String result = await NavigatorUtil.push(context, CityPage());
+    if (result != null) {
+      setState(() {
+        city = result;
+      });
+    }
   }
 
   //跳转搜索页面
@@ -124,6 +126,7 @@ class _HomePageState extends State<HomePage>
                             //滚动并且是列表滚动的时候
                             _onScroll(scrollNotification.metrics.pixels);
                           }
+                          return false;
                         },
                         child: _listView,
                       ))),
