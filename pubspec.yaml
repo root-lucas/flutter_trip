@@ -35,6 +35,7 @@ dependencies:
     cached_network_image: ^2.3.3
     azlistview: ^0.1.2
     lpinyin: ^1.1.0
+    fluttertoast: ^7.1.1
 
 dev_dependencies:
     flutter_test:
