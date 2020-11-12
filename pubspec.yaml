@@ -36,6 +36,7 @@ dependencies:
     azlistview: ^0.1.2
     lpinyin: ^1.1.0
     fluttertoast: ^7.1.1
+    flutter_splash_screen: ^0.1.0
 
 dev_dependencies:
     flutter_test:

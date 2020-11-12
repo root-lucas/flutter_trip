@@ -4,6 +4,7 @@ import 'package:flutter_trip/pages/my_page.dart';
 import 'package:flutter_trip/pages/search_page.dart';
 import 'package:flutter_trip/pages/travel_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
@@ -18,9 +19,22 @@ class _TabNavigatorState extends State<TabNavigator> {
   DateTime _lastPressedAt; //上次点击时间
 
   @override
+  void initState() {
+    hideScreen();
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  //隐藏启动屏
+  Future<void> hideScreen() async {
+    Future.delayed(Duration(milliseconds: 1000), () {
+      FlutterSplashScreen.hide();
+    });
   }
 
     //双击退出app

@@ -20,10 +20,13 @@ import java.util.ArrayList;
 import io.flutter.app.FlutterActivity;
 import io.flutter.plugins.GeneratedPluginRegistrant;
 
+import org.devio.flutter.splashscreen.SplashScreen;
+
 
 public class MainActivity extends FlutterActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this, true); // here 启动屏
         super.onCreate(savedInstanceState);
         GeneratedPluginRegistrant.registerWith(this);
         registerSelfPlugin();
