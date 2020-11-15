@@ -5,6 +5,7 @@ import 'package:flutter_trip/pages/search_page.dart';
 import 'package:flutter_trip/pages/travel_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_splash_screen/flutter_splash_screen.dart';
+import 'package:package_info/package_info.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
@@ -21,6 +22,7 @@ class _TabNavigatorState extends State<TabNavigator> {
   @override
   void initState() {
     hideScreen();
+    getPackageInfo();
     super.initState();
   }
 
@@ -37,7 +39,21 @@ class _TabNavigatorState extends State<TabNavigator> {
     });
   }
 
-    //双击退出app
+  //获取应用包信息
+  void getPackageInfo() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    String appName = packageInfo.appName;
+    String packageName = packageInfo.packageName;
+    String version = packageInfo.version;
+    String buildNumber = packageInfo.buildNumber;
+    print('===============appName:$appName');
+    print('===============packageName:$packageName');
+    print('===============version:$version');
+    print('===============buildNumber:$buildNumber');
+    // print('appName:$appName,packageName:$packageName,version:$version,buildNumber:$buildNumber');
+  }
+
+  //双击退出app
   Future<bool> exitApp() {
     if (_lastPressedAt == null ||
         DateTime.now().difference(_lastPressedAt) > Duration(seconds: 2)) {
@@ -73,22 +89,23 @@ class _TabNavigatorState extends State<TabNavigator> {
     return Scaffold(
       body: WillPopScope(
           child: PageView(
-        physics: NeverScrollableScrollPhysics(),
-        controller: _controller,
-        children: <Widget>[
-          HomePage(),
-          SearchPage(
-            hideLeft: true,
-          ),
-          TravelPage(),
-          MyPage(),
-        ],
-        /*onPageChanged: (index) {
+            physics: NeverScrollableScrollPhysics(),
+            controller: _controller,
+            children: <Widget>[
+              HomePage(),
+              SearchPage(
+                hideLeft: true,
+              ),
+              TravelPage(),
+              MyPage(),
+            ],
+            /*onPageChanged: (index) {
           setState(() {
             _currentIndex = index;
           });
         },*/
-      ),onWillPop: exitApp),
+          ),
+          onWillPop: exitApp),
       bottomNavigationBar: BottomNavigationBar(
           selectedFontSize: 12,
           unselectedFontSize: 12,

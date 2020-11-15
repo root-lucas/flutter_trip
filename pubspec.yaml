@@ -37,6 +37,7 @@ dependencies:
     lpinyin: ^1.1.0
     fluttertoast: ^7.1.1
     flutter_splash_screen: ^0.1.0
+    package_info: ^0.4.3+2
 
 dev_dependencies:
     flutter_test:
