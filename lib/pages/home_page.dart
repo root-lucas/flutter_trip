@@ -208,7 +208,7 @@ class _HomePageState extends State<HomePage>
   /*banner轮播图*/
   Widget get _banner {
     return Container(
-      height: 160,
+      height: 240,
       child: Swiper(
         autoplay: true,
         loop: true,
